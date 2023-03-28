@@ -7,12 +7,13 @@ import utilidades.Leer;
 
 public class Principal {
 	public static void main(String [] args) {
-		String nombre, ape, nomCur;
-		double notaM;
-		int edad, op;
+		String  nomCur;
+		int op=1;
 		char let;
 		Secretaria se;
+		
 		List <Alumno> listaAl = new ArrayList<Alumno>();
+		listaAl.add(null);
 		listaAl.add(new Alumno("Juan", "Lope", "1DAM", 9.8, 16));
 		listaAl.add(new Alumno("Alvaro", "Marq", "1AyF", 4.8, 19));
 		listaAl.add(new Alumno("Juan Francisco", "Cualicre", "1FPB", 9.2, 21));
@@ -20,6 +21,7 @@ public class Principal {
 		listaAl.add(new Alumno("Ale", "Solea", "1DAM", 9.2, 19));
 		listaAl.add(new Alumno("Pepe", "Sou", "1AyF", 2.1, 25));
 		listaAl.add(new Alumno("Ana", "Astaris", "1DAM", 9.6, 26));
+		se = new Secretaria(listaAl);
 		do {
 			try {
 				System.out.println("---------------------MENU---------------------");
@@ -39,25 +41,38 @@ public class Principal {
 				op = Leer.datoInt();
 				switch (op) {
 					case 1:
+						System.out.println("Diga el nombre de un curso");
+						nomCur = Leer.dato();
+						se.mostrarTodosAlumnosCurso(nomCur);
 						break;
 					case 2:
+						se.mostrarTodosAlumnos();
 						break;
 					case 3:
+						System.out.println("Diga la letra a buscar en mayúsculas");
+						let = Leer.datoChar();
+						se.mostrarAlumnosPorLetraNombre(let);
 						break;
 					case 4:
+						se.imprimirLongitudLista();
 						break;
 					case 5:
+						se.mostrarAlumnosDAM();
 						break;
 					case 6:
+						se.mostrar3PrimerosAl();
 						break;
 					case 7:
+						se.mostrarAlumnoMenorEdad();
 						break;
 					case 8:
+						se.mostrarPrimerAlumnoLista();
 						break;
 					case 9:
+						se.mostrarAlumnosNombreLargo();
 						break;
 					case 10:
-						
+						se.mostrarAlumnosLetraA();
 						break;
 					case 0:
 						System.out.println("Gracias por usar el programa");

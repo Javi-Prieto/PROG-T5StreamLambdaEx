@@ -39,15 +39,16 @@ public class Secretaria {
 	}
 	public void mostrarTodosAlumnos() {
 		lista.stream()
-		.forEach(System.out::println);
+		.forEach(/*System.out::println*/a -> System.out.println(a));
 	}
 	public void mostrarTodosAlumnosCurso(String nombre) {
+		System.out.println("Los alumnos de " + nombre + " son");
 		buscarTodosLosAlumnosCurso(nombre).stream()
 			.forEach(System.out::println);
 	}
 	public List<Alumno> buscarAlumnosPorLetraNombre(char inicial){
 		return lista.stream()
-				.filter(x -> x.getNombre().charAt(0) == inicial)
+				.filter(x -> x.getNombre().toUpperCase().charAt(0) == inicial)
 				.toList();
 	}
 	public void mostrarAlumnosPorLetraNombre(char inic) {
@@ -67,6 +68,7 @@ public class Secretaria {
 				.toList();
 	}
 	public void mostrarAlumnosDAM() {
+		System.out.println("Todos los alumnos de DAM con más de 9 de media son: ");
 		obtenerAlumnos1DAMMedia().stream()
 			.forEach(System.out::println);
 	}
@@ -76,7 +78,10 @@ public class Secretaria {
 				.limit(3)
 				.toList();
 	}
-	
+	public void mostrar3PrimerosAl() {
+		System.out.println("Los tres primeros alumnos son: ");
+		coger3PrimerosAlumnos().stream().forEach(System.out::println);
+	}
 	public Alumno obtenerAlumnoMenorEdad() {
 		return lista.stream()
 				.min((x,z) -> x.getEdad()<z.getEdad()?1:x.getEdad()>z.getEdad()?-1:0)
@@ -97,10 +102,11 @@ public class Secretaria {
 	}
 	public List<Alumno> obtenerAlumnosNombreLargo(){
 		return lista.stream()
-				.filter(x -> x.getNombre().toCharArray().length > 10)
+				.filter(x -> x.getNombre().length() > 10)
 				.toList();
 	}
 	public void mostrarAlumnosNombreLargo() {
+		System.out.println("Los alumnos con un nombre mayor a 10 carácteres");
 		obtenerAlumnosNombreLargo().stream()
 			.forEach(System.out::println);
 	}
@@ -111,6 +117,7 @@ public class Secretaria {
 				.toList();
 	}
 	public void mostrarAlumnosLetraA() {
+		System.out.println("Los alumnos cuyo nombre empieza por a y tienen un nombre corto son: ");
 		obtenerAlumnosLetraA().stream()
 			.forEach(System.out::println);
 	}
